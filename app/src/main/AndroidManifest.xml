@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.soft.homegardening">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <application
+        android:allowBackup="true"
+        android:hardwareAccelerated="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.HomeGardening">
+        <activity android:name=".SavedDataActivity"></activity>
+        <activity android:name=".ViewNotesActivity" />
+        <activity android:name=".AddNotesActivity" />
+        <activity android:name=".ClassificationPlantActivity" />
+        <activity android:name=".ChangePasswordActivity" />
+        <activity android:name=".AddPlantToMyGardenActivity" />
+        <activity android:name=".AddButtonActivity" />
+        <activity android:name=".SavedDataDetailActivity" />
+        <activity
+            android:name=".AddNewAlarmActivity"
+            android:hardwareAccelerated="true" />
+        <activity android:name=".ViewFavPlantActivity" />
+        <activity android:name=".ViewDetailActivity" />
+        <activity android:name=".ViewPlantListActivity" />
+        <activity android:name=".ForgetPasswordActivity" />
+        <activity android:name=".activities.DashBoardActivity" />
+        <activity android:name=".DetailActivity" />
+        <activity
+            android:name=".SignUpActivity"
+            android:hardwareAccelerated="true" />
+        <activity
+            android:name=".LoginActivity"
+            android:hardwareAccelerated="true" />
+        <activity android:name=".activities.UpdateProfileActivity" />
+        <activity android:name=".activities.UpdatePasswordActivity" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver android:name=".AlarmReciever" />
+    </application>
+
+</manifest>

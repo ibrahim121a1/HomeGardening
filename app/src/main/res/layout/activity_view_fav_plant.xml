@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="10"
+    tools:context=".ViewFavPlantActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/gardensp" />
+
+            <TextView
+                android:id="@+id/plant_name_TV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/margin15"
+                android:fontFamily="@font/madera_light"
+                android:text="Plant Name"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="25sp" />
+
+            <ImageView
+                android:id="@+id/addnotesid"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="10dp"
+                android:visibility="invisible"
+                android:src="@drawable/ic_notes" />
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="10dp"
+                android:src="@drawable/ic_view"
+                android:visibility="invisible"
+                android:id="@+id/viewnotes"/>
+
+            <RelativeLayout
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="170dp"
+                android:background="#61b15a" />
+
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/detailIV"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="120dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_launcher_background"
+                app:civ_border_color="#61b15a"
+                app:civ_border_width="1.5dp" />
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:layout_margin="@dimen/margin10">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/scrollview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/preparingTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="@font/madera_light"
+                        android:text="Preparing Guide "
+                        android:background="@color/txtcolor"
+                        android:textColor="@color/white"
+                        android:padding="@dimen/margin10"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/preparingdetailTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/preparingTv"
+                        android:layout_margin="@dimen/margin15"
+                        android:fontFamily="@font/madera_light"
+                        android:textColor="@color/txtcolor"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/PlantingTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/preparingdetailTv"
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="@font/madera_light"
+                        android:text="Planting Guide "
+                        android:textColor="@color/white"
+                        android:background="@color/txtcolor"
+                        android:padding="@dimen/margin10"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/PlantingdetailTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/PlantingTv"
+                        android:layout_margin="@dimen/margin15"
+                        android:fontFamily="@font/madera_light"
+                        android:textColor="@color/txtcolor"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/careTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/PlantingdetailTv"
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="@font/madera_light"
+                        android:text="How to Care "
+                        android:background="@color/txtcolor"
+                        android:textColor="@color/white"
+                        android:padding="@dimen/margin10"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/caredetailTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/careTv"
+                        android:layout_margin="@dimen/margin15"
+                        android:fontFamily="@font/madera_light"
+                        android:textColor="@color/txtcolor"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/fertilizerTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/caredetailTv"
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="@font/madera_light"
+                        android:text="Fertilizer"
+                        android:background="@color/txtcolor"
+                        android:textColor="@color/white"
+                        android:padding="@dimen/margin10"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/fertilizerdetailTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/fertilizerTv"
+                        android:layout_margin="@dimen/margin15"
+                        android:fontFamily="@font/madera_light"
+                        android:textColor="@color/txtcolor"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/pestTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/fertilizerdetailTv"
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="@font/madera_light"
+                        android:text="Pest Disease "
+                        android:background="@color/txtcolor"
+                        android:textColor="@color/white"
+                        android:padding="@dimen/margin10"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/pestdetailTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/pestTv"
+                        android:layout_margin="@dimen/margin15"
+                        android:fontFamily="@font/madera_light"
+                        android:textColor="@color/txtcolor"
+                        android:textSize="20sp" />
+                </RelativeLayout>
+            </androidx.core.widget.NestedScrollView>
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

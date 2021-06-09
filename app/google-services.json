@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "193058988664",
+    "project_id": "home-gardening-d2933",
+    "storage_bucket": "home-gardening-d2933.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:193058988664:android:f4dc4706a51c609ebc038d",
+        "android_client_info": {
+          "package_name": "com.soft.homegardening"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "193058988664-j7dlc27llhhicrmmn883um36qe1o4uf8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.soft.homegardening",
+            "certificate_hash": "4f0573527c99eb621a4f0551f98c9bbaa76d158c"
+          }
+        },
+        {
+          "client_id": "193058988664-dd1tk0gsh2spamglb3pg046slsn646va.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBt-B1a-SeAP1K6R5jEP1aPMWu5R5lvWo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "193058988664-dd1tk0gsh2spamglb3pg046slsn646va.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

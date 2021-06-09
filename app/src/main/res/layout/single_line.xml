@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="210dp"
+    android:layout_margin="@dimen/margin10"
+    android:background="@drawable/bg_rv">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:id="@+id/rvsave"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardBackgroundColor="#48EDE9E9"
+        android:focusable="true">
+
+        <RelativeLayout
+            android:id="@+id/IV_gravity"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal">
+
+                <com.mikhaellopez.circularimageview.CircularImageView
+                    android:id="@+id/single_lineIV"
+                    android:layout_width="170dp"
+                    android:layout_height="170dp"
+                    android:layout_margin="@dimen/margin10"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_launcher_background"
+                    app:civ_border_color="#61b15a"
+                    app:civ_border_width="2dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/IV_gravity"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/bg_line"
+                tools:ignore="NotSibling">
+
+                <TextView
+                    android:id="@+id/single_lineTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/madera_light"
+                    android:text="Plant Name"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
