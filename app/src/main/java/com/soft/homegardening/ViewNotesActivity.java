@@ -30,7 +30,7 @@ public class ViewNotesActivity extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference("Member").child(firebaseAuth.getUid()).child("My Garden")
                 .child(name.toLowerCase()).child("My Notes");
         options = new FirebaseRecyclerOptions.Builder<NotesModelClass>().setQuery(databaseReference, NotesModelClass.class).build();
-        notesAdaptorClass = new NotesAdaptorClass(options);
+        notesAdaptorClass = new NotesAdaptorClass(options,name.toLowerCase(),this);
         recyclerView.setAdapter(notesAdaptorClass);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         notesAdaptorClass.startListening();

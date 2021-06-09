@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.soft.homegardening.activities.DashBoardActivity;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -51,6 +52,7 @@ public class AddNotesActivity extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     Toast.makeText(AddNotesActivity.this, "Notes Successfully Added", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(AddNotesActivity.this, DashBoardActivity.class));
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                         @Override
