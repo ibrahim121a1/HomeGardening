@@ -42,6 +42,7 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
         navigationView = findViewById(R.id.nav_view);
         drawerLayout = findViewById(R.id.drawer_layout);
         Toolbar toolbar = findViewById(R.id.toolbar);
+        navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
         setSupportActionBar(toolbar);
 
