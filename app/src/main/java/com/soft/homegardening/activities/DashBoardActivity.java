@@ -14,6 +14,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -70,6 +71,7 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
         switch (item.getItemId()) {
             case R.id.nav_home:
                 loadFragment(new HomeFragment());
+
                 break;
             case R.id.nav_my_plants:
                 loadFragment(new MyGardenFragment());
@@ -148,7 +150,7 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
         }
         if (currentFragment != defaultFrag) {
             getFragmentManager().popBackStack();
-            navigationView.setCheckedItem(R.id.nav_my_plants);
+            navigationView.setCheckedItem(R.id.nav_home);
             loadFragment(defaultFrag);
         } else {
             super.onBackPressed();
