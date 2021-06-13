@@ -28,12 +28,12 @@ import java.util.Map;
 public class ViewDetailActivity extends AppCompatActivity {
 
     //declare variable
-    ImageView plantImg;
+    ImageView plantImg,backImg;
     TextView plantName,preparingTv,plantingTv,careTv,fertilizerTv,diseaseTv;
     String key;
-    DatabaseReference databaseReference, dbref,dbrefgarden;
+    DatabaseReference databaseReference, dbref,dbrefgarden,getDbref;
     String plant, name;
-    String geturl, getPlant,getPreparing,getPlanting,getCare,getFertilizer,getDisease;
+    String geturl, getPlant,getPreparing,getPlanting,getCare,getFertilizer,getDisease,getImage;
     FirebaseAuth firebaseAuth;
     ToggleButton favbtn;
     Button addmygarden;
@@ -49,6 +49,7 @@ public class ViewDetailActivity extends AppCompatActivity {
         preparingTv=findViewById(R.id.preparingdetailTv);
         plantingTv=findViewById(R.id.PlantingdetailTv);
         careTv=findViewById(R.id.caredetailTv);
+        backImg=findViewById(R.id.backimg);
         fertilizerTv=findViewById(R.id.fertilizerdetailTv);
         diseaseTv=findViewById(R.id.pestdetailTv);
         key = getIntent().getStringExtra("key");
@@ -61,6 +62,22 @@ public class ViewDetailActivity extends AppCompatActivity {
         dbrefgarden=FirebaseDatabase.getInstance().getReference("All Plants");
         favbtn = findViewById(R.id.fav_btn);
         dbref=FirebaseDatabase.getInstance().getReference("Member").child(firebaseAuth.getUid()).child("Favourite").child(name);
+        getDbref=FirebaseDatabase.getInstance().getReference("plantimg").child(plant);
+        getDbref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists())
+                {
+                    getImage=snapshot.child("image").getValue(String.class);
+                    Glide.with(getApplication()).load(getImage).into(backImg);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         databaseReference.child(key).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

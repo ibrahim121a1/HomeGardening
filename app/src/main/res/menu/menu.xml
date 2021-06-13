@@ -34,6 +34,10 @@
             android:id="@+id/nav_favirote"
             android:title="Favorite"
             android:icon="@drawable/faviconmenu"/>
+        <item
+            android:id="@+id/logout"
+            android:title="Logout"
+            android:icon="@drawable/logout"/>
     </group>
 
 

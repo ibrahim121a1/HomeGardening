@@ -8,12 +8,36 @@
     android:weightSum="10"
     tools:context=".ViewPlantListActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.3">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+                <EditText
+                    android:id="@+id/searchtext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Search"
+                    android:layout_centerInParent="true"
+                    android:drawableRight="@drawable/ic_round_search_24"
+                    android:background="@drawable/round_et_bg"
+                    android:padding="8dp"
+                    android:layout_marginStart="@dimen/margin15"
+                    android:layout_marginEnd="@dimen/margin15"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="10">
+        android:layout_weight="8.7">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview"

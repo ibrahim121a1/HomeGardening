@@ -17,6 +17,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 
 public class AdaptorClass extends FirebaseRecyclerAdapter<ModelClass, AdaptorClass.ViewHolder> {
+    public static Object ViewHolder;
     /**
      * Initialize a {@link RecyclerView.Adapter} that listens to a Firebase query. See
      * {@link FirebaseRecyclerOptions} for configuration options.
@@ -60,7 +61,7 @@ public class AdaptorClass extends FirebaseRecyclerAdapter<ModelClass, AdaptorCla
         return viewHolder;
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder {
         //declare
         ImageView plantIV;
         TextView plantnameTV;
