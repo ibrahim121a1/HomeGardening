@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -92,33 +93,47 @@ public class ClassificationPlantActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                int imageTensorIndex = 0;
-                int[] imageShape = tflite.getInputTensor(imageTensorIndex).shape(); // {1, height, width, 3}
-                imageSizeY = imageShape[1];
-                imageSizeX = imageShape[2];
-                DataType imageDataType = tflite.getInputTensor(imageTensorIndex).dataType();
-
-                int probabilityTensorIndex = 0;
-                int[] probabilityShape =
-                        tflite.getOutputTensor(probabilityTensorIndex).shape(); // {1, NUM_CLASSES}
-                DataType probabilityDataType = tflite.getOutputTensor(probabilityTensorIndex).dataType();
-
-                inputImageBuffer = new TensorImage(imageDataType);
-                outputProbabilityBuffer = TensorBuffer.createFixedSize(probabilityShape, probabilityDataType);
-                probabilityProcessor = new TensorProcessor.Builder().add(getPostprocessNormalizeOp()).build();
-
-                inputImageBuffer = loadImage(bitmap);
-
-                tflite.run(inputImageBuffer.getBuffer(),outputProbabilityBuffer.getBuffer().rewind());
-                showresult();
+                validateData();
             }
         });
 
 
 
     }
+    private void validateData() {
 
-    private TensorImage loadImage(final Bitmap bitmap) {
+
+        if (bitmap == null) {
+            Toast.makeText(this, "Plant image is mandatory...", Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            //shape and datatype of model by using interpreter
+            int imageTensorIndex = 0;
+            int[] imageShape = tflite.getInputTensor(imageTensorIndex).shape(); // {1, height, width, 3}
+            imageSizeY = imageShape[1];
+            imageSizeX = imageShape[2];
+            DataType imageDataType = tflite.getInputTensor(imageTensorIndex).dataType();
+
+            int probabilityTensorIndex = 0;
+            int[] probabilityShape =
+                    tflite.getOutputTensor(probabilityTensorIndex).shape(); // {1, NUM_CLASSES}
+            DataType probabilityDataType = tflite.getOutputTensor(probabilityTensorIndex).dataType();
+
+            inputImageBuffer = new TensorImage(imageDataType);
+
+            //probablity buffers for processing our probablity and give output
+            outputProbabilityBuffer = TensorBuffer.createFixedSize(probabilityShape, probabilityDataType);
+            probabilityProcessor = new TensorProcessor.Builder().add(getPostprocessNormalizeOp()).build();
+
+            inputImageBuffer = loadImage(bitmap);
+
+            tflite.run(inputImageBuffer.getBuffer(),outputProbabilityBuffer.getBuffer().rewind());
+            showresult();
+        }
+    }
+
+        private TensorImage loadImage(final Bitmap bitmap) {
         // Loads bitmap into a TensorImage.
         inputImageBuffer.load(bitmap);
 
@@ -225,16 +240,7 @@ public class ClassificationPlantActivity extends AppCompatActivity {
                         Uri selectedImage =  data.getData();
                         String[] filePathColumn = {MediaStore.Images.Media.DATA};
                         if (selectedImage != null) {
-//                            Cursor cursor = getContentResolver().query(selectedImage,
-//                                    filePathColumn, null, null, null);
-//                            if (cursor != null) {
-//                                cursor.moveToFirst();
-//
-//                                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-//                                String picturePath = cursor.getString(columnIndex);
-//                                plantIv.setImageBitmap(BitmapFactory.decodeFile(picturePath));
-//                                cursor.close();
-//                            }
+
                             try {
                                 imageView.setImageURI(selectedImage);
                                 bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
