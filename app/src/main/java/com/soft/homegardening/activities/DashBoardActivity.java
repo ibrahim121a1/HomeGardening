@@ -10,15 +10,19 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.crashlytics.internal.model.CrashlyticsReport;
 import com.soft.homegardening.AlarmsFragment;
 import com.soft.homegardening.FavoriteFragment;
 import com.soft.homegardening.HomeFragment;
 import com.soft.homegardening.IdentifyPlantFragment;
+import com.soft.homegardening.LoginActivity;
 import com.soft.homegardening.MyGardenFragment;
 import com.soft.homegardening.ProfileFragment;
 import com.soft.homegardening.R;
@@ -34,6 +38,7 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
     FragmentManager fm;
     FragmentTransaction ft;
     NavigationView navigationView;
+    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +48,7 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
         navigationView = findViewById(R.id.nav_view);
         drawerLayout = findViewById(R.id.drawer_layout);
         Toolbar toolbar = findViewById(R.id.toolbar);
+        firebaseAuth=FirebaseAuth.getInstance();
         navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
         setSupportActionBar(toolbar);
@@ -82,6 +88,11 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
                 break;
             case R.id.nav_identify:
                 loadFragment(new IdentifyPlantFragment());
+                break;
+            case R.id.logout:
+                firebaseAuth.signOut();
+                startActivity(new Intent(DashBoardActivity.this, LoginActivity.class));
+                finish();
                 break;
 
         }
