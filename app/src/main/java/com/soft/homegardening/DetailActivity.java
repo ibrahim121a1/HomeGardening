@@ -21,6 +21,7 @@ import me.relex.circleindicator.CircleIndicator;
 
 public class DetailActivity extends AppCompatActivity {
 
+    //declare vairable
     private static ViewPager mPager;
     private static int currentPage = 0;
     private static int NUM_PAGES = 0;
@@ -33,6 +34,7 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+        //initialize variable
         init();
         startedbtn = findViewById(R.id.getstartbtn);
         startedbtn.setOnClickListener(new View.OnClickListener() {
@@ -89,25 +91,7 @@ public class DetailActivity extends AppCompatActivity {
                             }, 4000,
                 4000);
 
-    /*     Pager listener over indicator
-        indicator.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
-            @Override
-            public void onPageSelected(int position) {
-                currentPage = position;
-
-            }
-
-            @Override
-            public void onPageScrolled(int pos, float arg1, int arg2) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int pos) {
-
-            }
-        });*/
 
     }
 
@@ -128,6 +112,7 @@ public class DetailActivity extends AppCompatActivity {
         return gifArrayList;
     }
 
+    //if user is not logout then move to dashboard activity
     @Override
     protected void onStart() {
         super.onStart();

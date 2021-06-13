@@ -14,15 +14,19 @@ import androidx.viewpager.widget.PagerAdapter;
 import java.util.ArrayList;
 
 public class SlidingImage_Adapter extends PagerAdapter {
+    //declare variables
     private ArrayList<ModelGif> gifArrayList;
     private LayoutInflater inflater;
     private Context context;
 
+    //constructor
     public SlidingImage_Adapter(ArrayList<ModelGif> gifArrayList, Context context) {
         this.gifArrayList = gifArrayList;
         inflater = LayoutInflater.from(context);
         this.context = context;
     }
+
+    //getcount of images
 
     @Override
     public int getCount() {
@@ -37,6 +41,7 @@ public class SlidingImage_Adapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup view, int position) {
+        //inflate layout file
         View imageLayout = inflater.inflate(R.layout.custom_layout, view, false);
 
         assert imageLayout != null;

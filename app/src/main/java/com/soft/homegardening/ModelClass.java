@@ -1,10 +1,12 @@
 package com.soft.homegardening;
 
 public class ModelClass {
+    //declare variable
     String name;
     String url;
     String seen;
 
+    //getter and setter
     public String getSeen() {
         return seen;
     }

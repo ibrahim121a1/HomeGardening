@@ -11,6 +11,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class ViewPlantListActivity extends AppCompatActivity {
+    //DECLARE VARIABLE
     RecyclerView recyclerView;
     FirebaseRecyclerOptions<ModelClass> options;
     AdaptorClass adaptorClass;
@@ -22,7 +23,9 @@ public class ViewPlantListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_plant_list);
         recyclerView=findViewById(R.id.recyclerview);
-        plant=getIntent().getExtras().getString("name");
+        plant=getIntent().getExtras().getString("name");   //GET THE NAME OF PLANT CATEGORY CLICK THE USER IN PREVIOUS ACTIVITY
+
+        // SHOW FLOWER
         if (plant.equals("flower"))
         {
             databaseReference= FirebaseDatabase.getInstance().getReference("flower");
@@ -32,6 +35,8 @@ public class ViewPlantListActivity extends AppCompatActivity {
             recyclerView.setAdapter(adaptorClass);
             adaptorClass.startListening();
         }
+
+        //SHOW CHILLIES
         else if (plant.equals("tree")){
             databaseReferencetree= FirebaseDatabase.getInstance().getReference("tree");
             options=new FirebaseRecyclerOptions.Builder<ModelClass>().setQuery(databaseReferencetree, ModelClass.class).build();
@@ -40,6 +45,7 @@ public class ViewPlantListActivity extends AppCompatActivity {
             recyclerView.setAdapter(adaptorClass);
             adaptorClass.startListening();
         }
+        //SHOW FRUITS
         else if (plant.equals("Plant")){
             databaseReferenceplant= FirebaseDatabase.getInstance().getReference("Plant");
             options=new FirebaseRecyclerOptions.Builder<ModelClass>().setQuery(databaseReferenceplant, ModelClass.class).build();
@@ -48,6 +54,8 @@ public class ViewPlantListActivity extends AppCompatActivity {
             recyclerView.setAdapter(adaptorClass);
             adaptorClass.startListening();
         }
+
+        //SHOW VEGETABLES
         else if (plant.equals("vegetable")){
             databaseReferencevegetable= FirebaseDatabase.getInstance().getReference("vegetable");
             options=new FirebaseRecyclerOptions.Builder<ModelClass>().setQuery(databaseReferencevegetable, ModelClass.class).build();
@@ -56,6 +64,7 @@ public class ViewPlantListActivity extends AppCompatActivity {
             recyclerView.setAdapter(adaptorClass);
             adaptorClass.startListening();
         }
+        //SHOW HERBS
         else if (plant.equals("herbs")){
             databaseReferenceherbs= FirebaseDatabase.getInstance().getReference("herbs");
             options=new FirebaseRecyclerOptions.Builder<ModelClass>().setQuery(databaseReferenceherbs, ModelClass.class).build();

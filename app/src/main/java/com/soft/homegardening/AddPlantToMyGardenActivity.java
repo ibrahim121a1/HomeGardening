@@ -43,15 +43,15 @@ import java.util.HashMap;
 
 public class AddPlantToMyGardenActivity extends AppCompatActivity {
 
+    //declare variable
     EditText plantNameET, timeET, dateET;
     Button addMygardenBtn;
     ImageView plantIV;
-    String description, name, saveCurrentDate, saveCurrentTime, productRandomKey, downloadImageUrl, time, date
-            ,getprepare,getplant,getCare,getFetilizer,getdisease,geturl,getplantName;
+    String description, name, saveCurrentDate, saveCurrentTime, productRandomKey, downloadImageUrl, time, date, getprepare, getplant, getCare, getFetilizer, getdisease, geturl, getplantName;
     private ProgressDialog loadingBar;
     private Uri imageUri;
     private StorageReference plantImageRef;
-    private DatabaseReference plantReference,checkplantRef;
+    private DatabaseReference plantReference, checkplantRef;
     FirebaseAuth firebaseAuth;
     Calendar calender;
     private static final int GALLERY_REQUEST = 1;
@@ -61,6 +61,7 @@ public class AddPlantToMyGardenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //initialize variable
         setContentView(R.layout.activity_add_plant_to_my_garden);
         plantIV = findViewById(R.id.select_productIV);
         plantNameET = findViewById(R.id.plantnameET);
@@ -74,7 +75,7 @@ public class AddPlantToMyGardenActivity extends AppCompatActivity {
         saveCurrentTime = currentTime.format(calender.getTime());
         timeET.setText(saveCurrentTime);
         dateET.setText(saveCurrentDate);
-        checkplantRef=FirebaseDatabase.getInstance().getReference("All Plants");
+        checkplantRef = FirebaseDatabase.getInstance().getReference("All Plants");
 
         plantIV.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,6 +91,7 @@ public class AddPlantToMyGardenActivity extends AppCompatActivity {
         addMygardenBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //validate plant data
                 validateplantData();
 
 
@@ -98,6 +100,7 @@ public class AddPlantToMyGardenActivity extends AppCompatActivity {
 
     }
 
+    //open dialog box
     private void selectImage() {
         final CharSequence[] options = {"Take Photo", "Choose from Gallery", "Cancel"};
 
@@ -183,20 +186,18 @@ public class AddPlantToMyGardenActivity extends AppCompatActivity {
             checkplantRef.child(plantNameET.getText().toString().toLowerCase()).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    if (snapshot.exists())
-                    {
-
-                        getplantName=snapshot.child("name").getValue(String.class);
-                        geturl=snapshot.child("url").getValue(String.class);
-                        getCare=snapshot.child("care").getValue(String.class);
-                        getFetilizer=snapshot.child("fertilizer").getValue(String.class);
-                        getprepare=snapshot.child("preparing").getValue(String.class);
-                        getplant=snapshot.child("planting").getValue(String.class);
-                        getdisease=snapshot.child("disease").getValue(String.class);
+                    if (snapshot.exists()) {
+                        //add plant if exit
+                        getplantName = snapshot.child("name").getValue(String.class);
+                        geturl = snapshot.child("url").getValue(String.class);
+                        getCare = snapshot.child("care").getValue(String.class);
+                        getFetilizer = snapshot.child("fertilizer").getValue(String.class);
+                        getprepare = snapshot.child("preparing").getValue(String.class);
+                        getplant = snapshot.child("planting").getValue(String.class);
+                        getdisease = snapshot.child("disease").getValue(String.class);
                         storePlantInformation();
-                        Toast.makeText(AddPlantToMyGardenActivity.this,"Plant Found :-)"+ name, Toast.LENGTH_SHORT).show();
-                    }
-                    else {
+                        Toast.makeText(AddPlantToMyGardenActivity.this, "Plant Found :-)" + name, Toast.LENGTH_SHORT).show();
+                    } else {
                         Toast.makeText(AddPlantToMyGardenActivity.this, "Plant Not Found :-(", Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -270,12 +271,12 @@ public class AddPlantToMyGardenActivity extends AppCompatActivity {
 
         objectHashMap.put("description", description);
         objectHashMap.put("url", downloadImageUrl);
-        objectHashMap.put("planting",getplant);
-        objectHashMap.put("preparing",getprepare);
-        objectHashMap.put("care",getCare);
-        objectHashMap.put("disease",getdisease);
-        objectHashMap.put("fertilizer",getFetilizer);
-        objectHashMap.put("seen","");
+        objectHashMap.put("planting", getplant);
+        objectHashMap.put("preparing", getprepare);
+        objectHashMap.put("care", getCare);
+        objectHashMap.put("disease", getdisease);
+        objectHashMap.put("fertilizer", getFetilizer);
+        objectHashMap.put("seen", "");
         objectHashMap.put("name", getplantName);
         plantReference.child(name).setValue(objectHashMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {

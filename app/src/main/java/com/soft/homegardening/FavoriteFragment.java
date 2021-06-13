@@ -63,6 +63,7 @@ public class FavoriteFragment extends BaseFragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+    //declare variable
     RecyclerView recyclerView;
     FavoriteAdaptorClass favoriteAdaptorClass;
     FirebaseRecyclerOptions<ModelClass> options;
@@ -75,6 +76,7 @@ public class FavoriteFragment extends BaseFragment {
         firebaseAuth=FirebaseAuth.getInstance();
         databaseReference= FirebaseDatabase.getInstance().getReference("Member").child(firebaseAuth.getUid()).child("Favourite");
         View view=inflater.inflate(R.layout.fragment_favorite, container, false);
+        //Initialize variable and show all favourite plant of user
         recyclerView=view.findViewById(R.id.rv);
         options = new FirebaseRecyclerOptions.Builder<ModelClass>().setQuery(databaseReference, ModelClass.class).build();
         favoriteAdaptorClass=new FavoriteAdaptorClass(options,getContext());

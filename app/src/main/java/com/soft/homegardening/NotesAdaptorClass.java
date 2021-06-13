@@ -47,6 +47,7 @@ public class NotesAdaptorClass extends FirebaseRecyclerAdapter<NotesModelClass,N
            public boolean onLongClick(View v) {
                AlertDialog.Builder builder=new AlertDialog.Builder(context);
                builder.setTitle("Do you Want to delete Notes?");
+
                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                    @Override
                    public void onClick(DialogInterface dialog, int which) {

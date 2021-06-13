@@ -68,6 +68,7 @@ public class IdentifyPlantFragment extends BaseFragment {
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_identify_plant, container, false);
         camIv=view.findViewById(R.id.camIV);
+        //move to classification activity to identify plant
         camIv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

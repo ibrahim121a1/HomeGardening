@@ -81,6 +81,7 @@ public class HomeFragment extends BaseFragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+    // DECLARE VARIABLE
     CardView trees;
     CardView flower;
     CardView herbs;
@@ -91,6 +92,7 @@ public class HomeFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        //VARIABLE INITIALIZED
         ivSearch = view.findViewById(R.id.iv_search);
         etSearch = view.findViewById(R.id.et_search);
         ivMic = view.findViewById(R.id.iv_mic);
@@ -99,6 +101,9 @@ public class HomeFragment extends BaseFragment {
         herbs=view.findViewById(R.id.herbs_Id);
         fruits=view.findViewById(R.id.tress_Id);
         vegetable=view.findViewById(R.id.vegetable_id);
+
+        //CLICK BUTTON TO MOVE VIEW PLANT LIST ACTIVITY TO VIEW PLANTS OF PARTICULAR CATEGORY
+
         vegetable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -153,7 +158,7 @@ public class HomeFragment extends BaseFragment {
 
         ivMic.setOnClickListener(v ->
                 {
-                    if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.RECORD_AUDIO)
+                    if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.RECORD_AUDIO) //ASK PERMISSION TO RECORD VOICE
                             != PackageManager.PERMISSION_GRANTED) {
                         makeRequest();
 

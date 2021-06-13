@@ -17,6 +17,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class SavedDataActivity extends AppCompatActivity {
 
+    //declare variable
     String name,key;
     DatabaseReference databaseReference;
     TextView plantName,detail;
@@ -26,6 +27,7 @@ public class SavedDataActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_saved_data);
+        //initialize variable
         plantName=findViewById(R.id.plant_name_TV);
         detail=findViewById(R.id.detailTv);
         plantimg=findViewById(R.id.detailIV);
@@ -40,8 +42,11 @@ public class SavedDataActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists())
                 {
+                    //load plant image
                     Glide.with(SavedDataActivity.this).load(snapshot.child("url").getValue().toString()).into(plantimg);
+                    //set plant name
                     plantName.setText(snapshot.child("name").getValue(String.class));
+                    //set detail of plant
                     detail.setText(snapshot.child("description").getValue(String.class));
                 }
             }

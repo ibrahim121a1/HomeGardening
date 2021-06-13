@@ -1,8 +1,10 @@
 package com.soft.homegardening;
 
 public class AlarmModelClass {
+    //declare variable
     String time;
 
+    //getter and setter
     public String getTime() {
         return time;
     }

@@ -23,6 +23,7 @@ import java.util.Map;
 
 public class ViewFavPlantActivity extends AppCompatActivity {
 
+    //Declare Variable
     ImageView favimg,addNotes,viewNotes;
     TextView favtext,preparingTv,plantingTv,careTv,fertilizerTv,diseaseTv;
     String key,name,seen,getPreparing,getPlanting,getCare,getFertilizer,getDisease,getName;
@@ -33,6 +34,7 @@ public class ViewFavPlantActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_fav_plant);
+        //Initialize Variable
         favimg=findViewById(R.id.detailIV);
         favtext=findViewById(R.id.plant_name_TV);
         preparingTv=findViewById(R.id.preparingdetailTv);
@@ -48,6 +50,7 @@ public class ViewFavPlantActivity extends AppCompatActivity {
         seen=getIntent().getStringExtra("seen");
         databaseReference= FirebaseDatabase.getInstance().getReference("Member").child(firebaseAuth.getUid()).child("Favourite");
         dbref=FirebaseDatabase.getInstance().getReference("Member").child(firebaseAuth.getUid()).child("My Garden");
+        //If user want to seen favourite plant then display favourite plant
         if (name.equals("Favourite"))
         {
             databaseReference.child(key).addValueEventListener(new ValueEventListener() {
@@ -76,6 +79,7 @@ public class ViewFavPlantActivity extends AppCompatActivity {
                 }
             });
         }
+        //If user want to seen My Garden plant then display My Garden plant
         else if (name.equals("My Garden"))
         {
             addNotes.setVisibility(View.VISIBLE);
@@ -108,6 +112,8 @@ public class ViewFavPlantActivity extends AppCompatActivity {
 
                 }
             });
+
+            //Move to add Notes Activity
             addNotes.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -116,6 +122,8 @@ public class ViewFavPlantActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
+
+            //Move to view notes activity
             viewNotes.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -125,6 +133,7 @@ public class ViewFavPlantActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
+            //Update last seen user open the plant
             Map<String,Object> map=new HashMap<>();
             map.put("seen","Last seen on "+seen);
             dbref.child(key).updateChildren(map);

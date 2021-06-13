@@ -32,8 +32,9 @@ public class FavoriteAdaptorClass extends FirebaseRecyclerAdapter<ModelClass,Fav
     @Override
     protected void onBindViewHolder(@NonNull ViewHolder viewHolder, int i, @NonNull ModelClass modelClass) {
         String key=getRef(i).getKey();
-       Glide.with(context).load(modelClass.getUrl()).into(viewHolder.plantImage);
-       viewHolder.plantName.setText(modelClass.getName());
+       Glide.with(context).load(modelClass.getUrl()).into(viewHolder.plantImage);//load plant image
+       viewHolder.plantName.setText(modelClass.getName());//set plant name
+       //move to next activity by clicking
        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
@@ -51,16 +52,19 @@ public class FavoriteAdaptorClass extends FirebaseRecyclerAdapter<ModelClass,Fav
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        //inflate layout file
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.single_row,parent,false);
         ViewHolder viewHolder=new ViewHolder(view);
         return viewHolder;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
+        //declare variable
         TextView plantName;
         ImageView plantImage;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            //initialize variable
             plantImage=itemView.findViewById(R.id.imageplantIV);
             plantName=itemView.findViewById(R.id.plantTV);
         }

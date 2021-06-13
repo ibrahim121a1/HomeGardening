@@ -43,13 +43,13 @@ public class MyGardenAdaptor extends FirebaseRecyclerAdapter<ModelClass, MyGarde
     @Override
     protected void onBindViewHolder(@NonNull ViewHolder viewHolder, int i, @NonNull ModelClass modelClass) {
         String key=getRef(i).getKey();
-        Glide.with(context).load(modelClass.getUrl()).into(viewHolder.plantImage);
-        viewHolder.plantName.setText(modelClass.getName());
-        viewHolder.lastseenTV.setText(modelClass.getSeen());
+        Glide.with(context).load(modelClass.getUrl()).into(viewHolder.plantImage);//load plant image
+        viewHolder.plantName.setText(modelClass.getName());//set plant name
+        viewHolder.lastseenTV.setText(modelClass.getSeen());//set last seen of plant
         Calendar calender=Calendar.getInstance();
         String saveCurrentTime;
         @SuppressLint("SimpleDateFormat") SimpleDateFormat currentTime = new SimpleDateFormat("MMM dd,yyyy");
-        saveCurrentTime = currentTime.format(calender.getTime());
+        saveCurrentTime = currentTime.format(calender.getTime());//get current time of calander
         viewHolder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,11 +65,13 @@ public class MyGardenAdaptor extends FirebaseRecyclerAdapter<ModelClass, MyGarde
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        //inflate layout file
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_garden, parent, false);
         return new ViewHolder(view);
     }
 
      class ViewHolder extends RecyclerView.ViewHolder {
+        //declare variable
         TextView plantName;
         ImageView plantImage;
         TextView lastseenTV;
@@ -78,6 +80,7 @@ public class MyGardenAdaptor extends FirebaseRecyclerAdapter<ModelClass, MyGarde
         public ViewHolder(@NonNull View itemView) {
 
             super(itemView);
+            //initialize variable
             plantImage = itemView.findViewById(R.id.gardenIV);
             plantName = itemView.findViewById(R.id.plant_name_TV);
             lastseenTV = itemView.findViewById(R.id.lastseenTV);

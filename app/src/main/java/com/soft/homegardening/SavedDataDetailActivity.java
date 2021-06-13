@@ -33,11 +33,11 @@ import java.util.HashMap;
 
 public class SavedDataDetailActivity extends AppCompatActivity {
 
+    //declare variable
     EditText plantName,plantDescription;
     ImageView plantImage;
     private  static final int galleryPick = 1;
     private Uri imageUri;
-
     private StorageReference plantImageRef;
     private DatabaseReference plantReference;
     FirebaseAuth firebaseAuth;
@@ -49,6 +49,7 @@ public class SavedDataDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_saved_data_detail);
+        //initialize variable
         plantName=findViewById(R.id.plantnameET);
         plantDescription=findViewById(R.id.plantdetailET);
         plantImage=findViewById(R.id.select_productIV);
@@ -94,8 +95,7 @@ public class SavedDataDetailActivity extends AppCompatActivity {
     private void validatePlantData() {
          description = plantDescription.getText().toString();
          name = plantName.getText().toString();
-
-
+         //check if image and edit are empty or not
         if (imageUri == null) {
             Toast.makeText(this, "Plant image is mandatory...", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(description)) {
@@ -107,21 +107,22 @@ public class SavedDataDetailActivity extends AppCompatActivity {
             storePlantInformation();
         }
     }
+    //store plant information in firebase
     private void storePlantInformation()
     {
         loadingBar.setTitle("Add New Plant");
         loadingBar.setMessage("Please wait...");
 
         loadingBar.setCanceledOnTouchOutside(false);
-        loadingBar.show();
+        loadingBar.show();//show progress bae
 
-        Calendar calender= Calendar.getInstance();
+        Calendar calender= Calendar.getInstance(); //initialize calander
 
         SimpleDateFormat currentDate= new SimpleDateFormat("MMM dd, yyyy");
-        saveCurrentDate = currentDate.format(calender.getTime());
+        saveCurrentDate = currentDate.format(calender.getTime());//get current date
 
         SimpleDateFormat currentTime= new SimpleDateFormat("HH:mm:ss a");
-        saveCurrentTime = currentTime.format(calender.getTime());
+        saveCurrentTime = currentTime.format(calender.getTime()); //get current time
 
         productRandomKey = saveCurrentDate+saveCurrentTime;
         final StorageReference filePath = plantImageRef.child(imageUri.getLastPathSegment() + productRandomKey + ".png");
@@ -162,7 +163,8 @@ public class SavedDataDetailActivity extends AppCompatActivity {
                     {
                         if(task.isSuccessful())
                         {
-                            downloadImageUrl = task.getResult().toString();
+
+                            downloadImageUrl = task.getResult().toString();//get link from storage
                             Toast.makeText(SavedDataDetailActivity.this,"Got the Product Image Url Successfully!",Toast.LENGTH_SHORT).show();
 
                             savePlantInfoToDB();
@@ -175,6 +177,7 @@ public class SavedDataDetailActivity extends AppCompatActivity {
 
     private void savePlantInfoToDB()
     {
+        //add data in realtimedatabase
         HashMap<String,Object> objectHashMap = new HashMap<>();
         objectHashMap.put("pid",productRandomKey);
 

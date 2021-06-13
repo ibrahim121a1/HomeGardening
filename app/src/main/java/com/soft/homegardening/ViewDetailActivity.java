@@ -27,6 +27,7 @@ import java.util.Map;
 
 public class ViewDetailActivity extends AppCompatActivity {
 
+    //declare variable
     ImageView plantImg;
     TextView plantName,preparingTv,plantingTv,careTv,fertilizerTv,diseaseTv;
     String key;
@@ -35,13 +36,13 @@ public class ViewDetailActivity extends AppCompatActivity {
     String geturl, getPlant,getPreparing,getPlanting,getCare,getFertilizer,getDisease;
     FirebaseAuth firebaseAuth;
     ToggleButton favbtn;
-    boolean favcheck = false;
     Button addmygarden;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_detail);
+        //initialize variable
         plantImg = findViewById(R.id.detailIV);
         plantName = findViewById(R.id.plant_name_TV);
         addmygarden=findViewById(R.id.add_to_my_garden);
@@ -57,13 +58,14 @@ public class ViewDetailActivity extends AppCompatActivity {
 
 
         firebaseAuth = FirebaseAuth.getInstance();
-        dbrefgarden=FirebaseDatabase.getInstance().getReference("Member").child(firebaseAuth.getUid()).child("My Garden");
+        dbrefgarden=FirebaseDatabase.getInstance().getReference("All Plants");
         favbtn = findViewById(R.id.fav_btn);
         dbref=FirebaseDatabase.getInstance().getReference("Member").child(firebaseAuth.getUid()).child("Favourite").child(name);
         databaseReference.child(key).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
+                    //show data if exsisit
                     geturl = snapshot.child("url").getValue().toString();
                     getPlant = snapshot.child("name").getValue().toString();
                     getPreparing=snapshot.child("preparing").getValue().toString();
@@ -88,6 +90,7 @@ public class ViewDetailActivity extends AppCompatActivity {
 
             }
         });
+        // add data in my garden
         addmygarden.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,7 +102,7 @@ public class ViewDetailActivity extends AppCompatActivity {
                 gardenmap.put("planting",getPlanting);
                 gardenmap.put("preparing",getPreparing);
                 gardenmap.put("disease",getDisease);
-                gardenmap.put("seen"," ");
+//                gardenmap.put("seen"," ");
                 dbrefgarden.child(getPlant.toLowerCase()).setValue(gardenmap);
                 Toast.makeText(ViewDetailActivity.this, "Plant Added in My Garden", Toast.LENGTH_SHORT).show();
             }
@@ -111,6 +114,7 @@ public class ViewDetailActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked)
                 {
+                    // add data to favourite plant
                     favbtn.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_fav));
                     Map<Object,String> map=new HashMap<>();
                     map.put("name",getPlant);

@@ -15,6 +15,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class ForgetPasswordActivity extends AppCompatActivity {
 
+    //declare variable
     EditText EmailET;
     Button sendemailbtn;
     FirebaseAuth firebaseAuth;
@@ -22,9 +23,11 @@ public class ForgetPasswordActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forget_password);
+        //initialize variable
         EmailET=findViewById(R.id.EmailET);
         sendemailbtn=findViewById(R.id.sendemailbtn);
         firebaseAuth=FirebaseAuth.getInstance();
+        // send email to reset your password after authentication
         sendemailbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

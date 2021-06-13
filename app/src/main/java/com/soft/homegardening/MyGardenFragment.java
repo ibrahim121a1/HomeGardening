@@ -81,6 +81,7 @@ public class MyGardenFragment extends BaseFragment {
         return AllFragments.MyGardenFragment;
     }
 
+    //declare variable
     RecyclerView recyclerView;
     FirebaseRecyclerOptions<ModelClass> options;
     DatabaseReference databaseReference;
@@ -94,29 +95,26 @@ public class MyGardenFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_my_garden, container, false);
+        //initialize variable
         recyclerView = view.findViewById(R.id.rv);
         firebaseAuth=FirebaseAuth
                 .getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference("Member").child(firebaseAuth.getUid()).child("My Garden");
 
-//        if (recyclerView.getItemDecorationCount()==0)
-//        {
-//            Toast.makeText(getActivity(), "Not Record to show", Toast.LENGTH_SHORT).show();
-//        }
-//        else {
         options = new FirebaseRecyclerOptions.Builder<ModelClass>().setQuery(databaseReference, ModelClass.class).build();
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
         adaptorClass=new MyGardenAdaptor(options,getContext());
         recyclerView.setAdapter(adaptorClass);
         count = view.findViewById(R.id.numtv);
         floatingActionButton=view.findViewById(R.id.fbtn);
+        //click to add plant in my garden
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getContext(), AddButtonActivity.class));
             }
         });
-
+        // Get the amount of plants in My Garden
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -132,7 +130,7 @@ public class MyGardenFragment extends BaseFragment {
         adaptorClass.startListening();
 
 
-//        }
+
 
         return view;
 

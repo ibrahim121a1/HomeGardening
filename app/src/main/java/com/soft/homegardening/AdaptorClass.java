@@ -40,9 +40,9 @@ public class AdaptorClass extends FirebaseRecyclerAdapter<ModelClass, AdaptorCla
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String key = getRef(i).getKey();
+                String key = getRef(i).getKey();  //parent of click plant
                 String name = viewHolder.plantnameTV.getText().toString();
-                Intent intent = new Intent(context, ViewDetailActivity.class);
+                Intent intent = new Intent(context, ViewDetailActivity.class); //move to view detail activity
                 intent.putExtra("key", key);
                 intent.putExtra("plant", plant);
                 intent.putExtra("name", name);
@@ -54,17 +54,20 @@ public class AdaptorClass extends FirebaseRecyclerAdapter<ModelClass, AdaptorCla
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        //inflate the layout file
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_row, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
+        //declare
         ImageView plantIV;
         TextView plantnameTV;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            //initialize
             plantnameTV = itemView.findViewById(R.id.plantTV);
             plantIV = itemView.findViewById(R.id.imageplantIV);
         }

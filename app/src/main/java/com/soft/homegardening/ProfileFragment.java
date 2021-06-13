@@ -69,6 +69,7 @@ public class ProfileFragment extends BaseFragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+    //declare variable
     TextView TvName,TvMobileno,TvEmail;
     DatabaseReference databaseReference;
     FirebaseAuth firebaseAuth;
@@ -79,12 +80,13 @@ public class ProfileFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_profile, container, false);
+        //initialize the variables
         TvName=view.findViewById(R.id.tv_name);
-//        TvMobileno=view.findViewById(R.id.tv_mobileNo);
         TvEmail=view.findViewById(R.id.tv_email);
         firebaseAuth=FirebaseAuth.getInstance();
         cardView=view.findViewById(R.id.cl_logout);
         changePassword=view.findViewById(R.id.cl_changePassword);
+        //logout account
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,6 +96,7 @@ public class ProfileFragment extends BaseFragment {
 
             }
         });
+        //open change password activity
         changePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,6 +105,7 @@ public class ProfileFragment extends BaseFragment {
         });
         if (firebaseAuth!=null)
         {
+            //set Email and UserName of user
             TvEmail.setText(firebaseAuth.getCurrentUser().getEmail());
             databaseReference= FirebaseDatabase.getInstance().getReference("Member").child(firebaseAuth.getCurrentUser().getUid().toString());
             databaseReference.addValueEventListener(new ValueEventListener() {

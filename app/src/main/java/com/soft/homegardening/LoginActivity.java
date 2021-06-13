@@ -25,17 +25,19 @@ import com.google.firebase.auth.FirebaseUser;
 import com.soft.homegardening.activities.DashBoardActivity;
 
 public class LoginActivity extends AppCompatActivity {
+
+    //VARIABLE DECLARED
     Button signupbtn, signinbtn;
     EditText EmailET, PasswordET;
     FirebaseAuth firebaseAuth;
     ProgressBar progressBar;
     TextView forgetpasswordTV;
-//    private FirebaseAuth.AuthStateListener authStateListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        //VARIABLE INITIALIZED
         signupbtn = findViewById(R.id.register_btn);
         EmailET = findViewById(R.id.EmailET);
         PasswordET = findViewById(R.id.passwordET);
@@ -43,37 +45,27 @@ public class LoginActivity extends AppCompatActivity {
         signinbtn = findViewById(R.id.login_btn);
         progressBar = findViewById(R.id.progressbar);
         forgetpasswordTV = findViewById(R.id.forgetpasswordTV);
+        //MOVE TO FORGET PASSWORD ACTIVITY
         forgetpasswordTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this, ForgetPasswordActivity.class));
             }
         });
+        // SIGNIN AFTER AUTHENTICATION
         signinbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 signin();
             }
         });
+        //MOVE TO SIGNUP ACTIVITY
         signupbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
             }
         });
-//        authStateListener=new FirebaseAuth.AuthStateListener() {
-//            @Override
-//            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-//                FirebaseUser user = firebaseAuth.getCurrentUser();
-//                if (user != null) {
-//                    Toast.makeText(LoginActivity.this, "User logged in ", Toast.LENGTH_SHORT).show();
-//                    Intent I = new Intent(LoginActivity.this, DashBoardActivity.class);
-//                    startActivity(I);
-//                } else {
-//                    Toast.makeText(LoginActivity.this, "Login to continue", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        };
     }
 
 
@@ -88,7 +80,7 @@ public class LoginActivity extends AppCompatActivity {
         } else {
             progressBar.setVisibility(View.VISIBLE);
             signinbtn.setEnabled(false);
-            firebaseAuth.signInWithEmailAndPassword(EmailET.getText().toString(), PasswordET.getText().toString())
+            firebaseAuth.signInWithEmailAndPassword(EmailET.getText().toString(), PasswordET.getText().toString()) //CREATE ACCOUNT WITH EMAIL AND PASSWORD
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
@@ -107,9 +99,7 @@ public class LoginActivity extends AppCompatActivity {
                                     } else {
                                         Toast.makeText(LoginActivity.this, "Unable to login", Toast.LENGTH_SHORT).show();
                                     }
-                                }
-                                catch (Exception e)
-                                {
+                                } catch (Exception e) {
                                     Toast.makeText(LoginActivity.this, "Unable to Login", Toast.LENGTH_SHORT).show();
                                 }
 

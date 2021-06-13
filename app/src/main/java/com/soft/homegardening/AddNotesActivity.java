@@ -22,6 +22,7 @@ import java.util.Map;
 
 public class AddNotesActivity extends AppCompatActivity {
 
+    //declare variables
     EditText notesEt;
     Button addBtn;
     FirebaseAuth firebaseAuth;
@@ -45,6 +46,7 @@ public class AddNotesActivity extends AppCompatActivity {
                 }
                 else
                 {
+                    //Add notes about plant
                     Map<Object,String> notesmap=new HashMap<>();
                     notesmap.put("notes",notesEt.getText().toString());
                     databaseReference.child("My Notes").push().setValue(notesmap)

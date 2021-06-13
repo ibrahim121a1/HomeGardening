@@ -15,6 +15,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class ChangePasswordActivity extends AppCompatActivity {
+    //declare variable
     EditText newpassword, changepassword;
     Button changePassbtn;
     FirebaseUser firebaseUser;
@@ -24,12 +25,14 @@ public class ChangePasswordActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
+        //initialize variable
         newpassword = findViewById(R.id.changeET);
         changepassword = findViewById(R.id.confirmET);
         changePassbtn = findViewById(R.id.sendemailbtn);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
 
+        //change password
         changePassbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

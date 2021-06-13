@@ -66,6 +66,7 @@ public class AlarmsFragment extends BaseFragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+    // declare variable
     RecyclerView recyclerView;
     FloatingActionButton floatingActionButton;
     DatabaseReference databaseReference;
@@ -77,9 +78,11 @@ public class AlarmsFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_alarms, container, false);
+        //initialize
         recyclerView=view.findViewById(R.id.alarm_rv);
         floatingActionButton=view.findViewById(R.id.add_new_alarm);
         auth=FirebaseAuth.getInstance();
+        //show all alarm set by user
         databaseReference= FirebaseDatabase.getInstance().getReference("Member").child(auth.getUid()).child("Alarm");
         options=new FirebaseRecyclerOptions.Builder<AlarmModelClass>().setQuery(databaseReference,AlarmModelClass.class).build();
         alarmAdaptorClass=new AlarmAdaptorClass(options);

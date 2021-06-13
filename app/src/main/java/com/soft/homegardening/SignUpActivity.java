@@ -28,6 +28,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SignUpActivity extends AppCompatActivity {
+    //declare variable
     EditText EmailET, PasswordET, CpasswordET, UsernameET;
     FirebaseAuth firebaseAuth;
     FirebaseDatabase firebaseDatabase;
@@ -41,6 +42,7 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         initialize();
+        // signup after authentication
         signupbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,7 +51,7 @@ public class SignUpActivity extends AppCompatActivity {
         });
 
     }
-
+    // initialize variable
     private void initialize() {
         EmailET = findViewById(R.id.EmailET);
         PasswordET = findViewById(R.id.passwordET);
@@ -80,7 +82,7 @@ public class SignUpActivity extends AppCompatActivity {
                     } else {
                         progressBar.setVisibility(View.VISIBLE);
                         signupbtn.setEnabled(false);
-                        firebaseAuth.createUserWithEmailAndPassword(EmailET.getText().toString(), PasswordET.getText().toString())
+                        firebaseAuth.createUserWithEmailAndPassword(EmailET.getText().toString(), PasswordET.getText().toString()) //signup with email and password
                                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                     @Override
                                     public void onComplete(@NonNull Task<AuthResult> task) {

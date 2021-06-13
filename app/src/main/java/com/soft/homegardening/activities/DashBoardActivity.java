@@ -27,7 +27,7 @@ import com.soft.homegardening.fragments.BaseFragment;
 
 public class DashBoardActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-
+    //VARIABLE DECLARED
     private DrawerLayout drawerLayout;
     private BaseFragment currentFragment;
     private BaseFragment defaultFrag;
@@ -39,6 +39,7 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_board);
+        //VARIABLE INITIALIZED
         navigationView = findViewById(R.id.nav_view);
         drawerLayout = findViewById(R.id.drawer_layout);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -57,6 +58,7 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationVi
 
     }
 
+    //CLICK MENU OPTION TO OPEN THAT FRAGMENT
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {

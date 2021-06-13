@@ -154,19 +154,23 @@ public class ClassificationPlantActivity extends AppCompatActivity {
 
         try{
             labels = FileUtil.loadLabels(this,"newdict.txt");
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        Map<String, Float> labeledProbability =
-                new TensorLabel(labels, probabilityProcessor.process(outputProbabilityBuffer))
-                        .getMapWithFloatValue();
-        float maxValueInMap =(Collections.max(labeledProbability.values()));
+            Map<String, Float> labeledProbability =
+                    new TensorLabel(labels, probabilityProcessor.process(outputProbabilityBuffer))
+                            .getMapWithFloatValue();
+            float maxValueInMap =(Collections.max(labeledProbability.values()));
 
-        for (Map.Entry<String, Float> entry : labeledProbability.entrySet()) {
-            if (entry.getValue()==maxValueInMap) {
-                classitext.setText(entry.getKey());
+            for (Map.Entry<String, Float> entry : labeledProbability.entrySet()) {
+                if (entry.getValue()==maxValueInMap) {
+                    classitext.setText(entry.getKey());
+                }
+
             }
+//            tflite.close();
+        }catch (Exception e){
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
+
+
     }
     private void selectImage() {
         final CharSequence[] options = {"Take Photo", "Choose from Gallery", "Cancel"};

@@ -66,6 +66,7 @@ public class SavedFragment extends BaseFragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+    //declare variable
     RecyclerView recyclerView;
     SavedAdpatorClass savedAdpatorClass;
     FirebaseRecyclerOptions<ModelClass> options;
@@ -77,6 +78,7 @@ public class SavedFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_saved, container, false);
+        //initialize variable
         recyclerView=view.findViewById(R.id.rv);
         firebaseAuth=FirebaseAuth.getInstance();
         databaseReference= FirebaseDatabase.getInstance().getReference("Member").child(firebaseAuth.getUid()).child("Save Data");
@@ -86,6 +88,7 @@ public class SavedFragment extends BaseFragment {
         recyclerView.setAdapter(savedAdpatorClass);
         savedAdpatorClass.startListening();
         floatingActionButton=view.findViewById(R.id.fbtn);
+        //move to save data detail activity
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
