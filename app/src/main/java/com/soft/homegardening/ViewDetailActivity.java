@@ -59,7 +59,7 @@ public class ViewDetailActivity extends AppCompatActivity {
 
 
         firebaseAuth = FirebaseAuth.getInstance();
-        dbrefgarden=FirebaseDatabase.getInstance().getReference("All Plants");
+        dbrefgarden=FirebaseDatabase.getInstance().getReference("Member").child(firebaseAuth.getUid()).child("My Garden");
         favbtn = findViewById(R.id.fav_btn);
         dbref=FirebaseDatabase.getInstance().getReference("Member").child(firebaseAuth.getUid()).child("Favourite").child(name);
         getDbref=FirebaseDatabase.getInstance().getReference("plantimg").child(plant);

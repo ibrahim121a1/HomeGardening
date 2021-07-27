@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.soft.homegardening.alarm.permission.SET_ALARM" />
 
     <application
         android:allowBackup="true"
@@ -30,7 +31,9 @@
         <activity android:name=".ViewDetailActivity" />
         <activity android:name=".ViewPlantListActivity" />
         <activity android:name=".ForgetPasswordActivity" />
-        <activity android:name=".activities.DashBoardActivity" />
+        <activity
+            android:name=".activities.DashBoardActivity"
+            android:largeHeap="true" />
         <activity android:name=".DetailActivity" />
         <activity
             android:name=".SignUpActivity"

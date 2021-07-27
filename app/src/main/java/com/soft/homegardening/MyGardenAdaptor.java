@@ -39,7 +39,7 @@ public class MyGardenAdaptor extends FirebaseRecyclerAdapter<ModelClass, MyGarde
         this.context = context;
     }
 
-    @SuppressLint("SetTextI18n")
+
     @Override
     protected void onBindViewHolder(@NonNull ViewHolder viewHolder, int i, @NonNull ModelClass modelClass) {
         String key=getRef(i).getKey();

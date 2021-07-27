@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -130,6 +131,18 @@ public class ViewPlantListActivity extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull AdaptorClass.ViewHolder viewHolder, int i, @NonNull ModelClass modelClass) {
                 viewHolder.plantnameTV.setText(modelClass.getName());
                 Glide.with(ViewPlantListActivity.this).load(modelClass.getUrl()).into(viewHolder.plantIV);
+                viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String key = getRef(i).getKey();  //parent of click plant
+                        String name = viewHolder.plantnameTV.getText().toString();
+                        Intent intent = new Intent(ViewPlantListActivity.this, ViewDetailActivity.class); //move to view detail activity
+                        intent.putExtra("key", key);
+                        intent.putExtra("plant", plant);
+                        intent.putExtra("name", name);
+                        startActivity(intent);
+                    }
+                });
             }
 
             @NonNull

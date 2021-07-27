@@ -51,6 +51,7 @@ public class SignUpActivity extends AppCompatActivity {
         });
 
     }
+
     // initialize variable
     private void initialize() {
         EmailET = findViewById(R.id.EmailET);
@@ -62,11 +63,11 @@ public class SignUpActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressbar);
         databaseReference = firebaseDatabase.getReference("Member");
         signupbtn = findViewById(R.id.login_btn);
-        alreadyTV=findViewById(R.id.alreasy_tv);
+        alreadyTV = findViewById(R.id.alreasy_tv);
         alreadyTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SignUpActivity.this,LoginActivity.class));
+                startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
             }
         });
     }

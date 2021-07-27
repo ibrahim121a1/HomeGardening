@@ -16,7 +16,7 @@ import android.os.Build;
 import androidx.core.app.NotificationCompat;
 import androidx.legacy.content.WakefulBroadcastReceiver;
 
-public class AlarmReciever  extends WakefulBroadcastReceiver {
+public class AlarmReciever  extends BroadcastReceiver {
     private static final String CHANNEL_ID = "CHANNEL_SAMPLE";
     
     @Override
@@ -46,14 +46,14 @@ public class AlarmReciever  extends WakefulBroadcastReceiver {
         NotificationManager notificationManager =
                 (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            // For API 26 and above
-            CharSequence channelName = "My Notification";
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-
-            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, channelName, importance);
-            notificationManager.createNotificationChannel(channel);
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//            // For API 26 and above
+//            CharSequence channelName = "My Notification";
+//            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+//
+//            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, channelName, importance);
+//            notificationManager.createNotificationChannel(channel);
+//        }
 
         // Prepare Notification
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)

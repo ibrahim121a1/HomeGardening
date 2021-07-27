@@ -66,6 +66,7 @@ public class SavedFragment extends BaseFragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+
     //declare variable
     RecyclerView recyclerView;
     SavedAdpatorClass savedAdpatorClass;
@@ -73,26 +74,27 @@ public class SavedFragment extends BaseFragment {
     DatabaseReference databaseReference;
     FloatingActionButton floatingActionButton;
     FirebaseAuth firebaseAuth;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view=inflater.inflate(R.layout.fragment_saved, container, false);
+        View view = inflater.inflate(R.layout.fragment_saved, container, false);
         //initialize variable
-        recyclerView=view.findViewById(R.id.rv);
-        firebaseAuth=FirebaseAuth.getInstance();
-        databaseReference= FirebaseDatabase.getInstance().getReference("Member").child(firebaseAuth.getUid()).child("Save Data");
-        options=new FirebaseRecyclerOptions.Builder<ModelClass>().setQuery(databaseReference, ModelClass.class).build();
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
-        savedAdpatorClass=new SavedAdpatorClass(options,getActivity());
+        recyclerView = view.findViewById(R.id.rv);
+        firebaseAuth = FirebaseAuth.getInstance();
+        databaseReference = FirebaseDatabase.getInstance().getReference("Member").child(firebaseAuth.getUid()).child("Save Data");
+        options = new FirebaseRecyclerOptions.Builder<ModelClass>().setQuery(databaseReference, ModelClass.class).build();
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        savedAdpatorClass = new SavedAdpatorClass(options, getActivity());
         recyclerView.setAdapter(savedAdpatorClass);
         savedAdpatorClass.startListening();
-        floatingActionButton=view.findViewById(R.id.fbtn);
+        floatingActionButton = view.findViewById(R.id.fbtn);
         //move to save data detail activity
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(),SavedDataDetailActivity.class));
+                startActivity(new Intent(getContext(), SavedDataDetailActivity.class));
             }
         });
         return view;

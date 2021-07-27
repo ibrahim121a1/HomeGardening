@@ -217,15 +217,6 @@ public class ClassificationPlantActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-//        if(requestCode==12 && resultCode==RESULT_OK && data!=null) {
-//            imageuri = data.getData();
-//            try {
-//                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageuri);
-//                imageView.setImageBitmap(bitmap);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
         if(resultCode != RESULT_CANCELED) {
             switch (requestCode) {
                 case 0:
